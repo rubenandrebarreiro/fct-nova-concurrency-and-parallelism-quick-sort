@@ -5,7 +5,7 @@
 #include <sys/time.h>
 
 #include "qs.h" 
-
+#include <string.h>
 
 #define TYPE_SET    1   // to work with doubles
 // #define TYPE_SET    2   // to work with longs
