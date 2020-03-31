@@ -1,4 +1,6 @@
-main
+qs-libc
+qs-seq
+qs-omp
 *.deps
 
 # Created by https://www.gitignore.io/api/c++,java,linux,macos,latex,windows
