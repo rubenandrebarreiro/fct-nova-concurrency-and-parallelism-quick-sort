@@ -15,7 +15,7 @@
 #define QSORT qsort
 #endif
 
-
+void swap (void *a, void *b, size_t width);
 
 void QSORT(void *base, size_t nel, size_t width, 
            int (*compar)(const void *, const void *));

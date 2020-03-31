@@ -102,6 +102,21 @@ double wctime () {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+/// swap elements from array
+void swap (void *a, void *b, size_t width) {
+
+    char buffer[width];
+
+    memcpy (buffer, a, width);
+
+    memcpy (a, b, width);
+    memcpy (b, buffer, width);
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
 /// main
 int main (int argc, char* argv[]) {
     if (argc != 2) {
