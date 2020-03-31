@@ -127,11 +127,14 @@ int main (int argc, char* argv[]) {
     // get the size of the array
     long N = atol (argv[1]);
     
-    // initialize the array with ranbdom contents of type TYPE
+    // initialize the array with random contents of type TYPE
     TYPE* array = malloc (sizeof (*array) * N);
     TYPE_SRAND;
-    for (int i = 0; i < N; i++)
-        array[i] = TYPE_RAND ();
+    for (int i = 0; i < N; i++) {
+      double rand = TYPE_RAND();
+      printf("%lf ", rand);
+      array[i] = rand;
+    }
 
     // sort the array using quick sort
     double start = wctime ();

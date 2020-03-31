@@ -18,13 +18,13 @@ int partition(void *base, int low_index, int high_index, size_t size_type, int (
       // Increment the index of the smaller element
       i+= size_type;
 
-      swap(&(base + i), &(base + j), size_type);
+      swap((base + i), (base + j), size_type);
 
     }
 
   }
 
-  swap(&(base + i + size_type), &high_index, size_type);
+  swap((base + i + size_type), &high_index, size_type);
 
   return (i + size_type);
 
@@ -48,22 +48,30 @@ void quick_sort(void *base, int low_index, int high_index, size_t size_type, int
 /// Your own sequential implementation of Quick Sort
 void QSORT(void *base, size_t num_elems, size_t size_type, int (*compar)(const void *, const void *)) {
 
+  printf("\n\n");
+
   printf("Initial array/vector:\n");
 
   for(int current_elem = 0; current_elem < num_elems; current_elem++) {
 
-    printf("%d ", base[current_elem]);
+    printf("%lf ", ((double *) &base)[current_elem]);
 
   }
+
+  printf("\n\n");
 
   // Your code goes here
   quick_sort(base, 0, ( num_elems * (size_type - 1) ), size_type, compar);
 
+  printf("Final array/vector:\n");
+
   for(int current_elem = 0; current_elem < num_elems; current_elem++) {
 
-    printf("%d ", base[current_elem]);
+    printf("%lf ", ((double *) &base)[current_elem]);
 
   }
+
+  printf("\n\n");
 
 }
 
