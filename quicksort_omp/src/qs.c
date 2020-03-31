@@ -8,7 +8,8 @@
 
 
 #define TYPE_SET    1   // to work with doubles
-// #define TYPE_SET    2   // to work with longs
+#define TYPE_SET    2   // to work with longs
+#define TYPE_SET    3   // to work with ints
 // #define TYPE_SET    3, 4, ..., to whatever types you find interesting
 
 
