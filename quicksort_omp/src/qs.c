@@ -8,9 +8,10 @@
 #include "qs.h"
 
 
-#define TYPE_SET    3   // to work with doubles
-// #define TYPE_SET    2   // to work with longs
-// #define TYPE_SET    3, 4, ..., to whatever types you find interesting
+#define TYPE_SET    1 // to work with doubles
+//#define TYPE_SET    2  // to work with longs
+//#define TYPE_SET    3  // to work with chars
+// #define TYPE_SET  4, ..., to whatever types you find interesting
 
 
 
