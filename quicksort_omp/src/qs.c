@@ -99,7 +99,18 @@ double wctime () {
     return tv.tv_sec + 1E-6 * tv.tv_usec;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////
+/// swap elements from array
+void swap (void *a, void *b, size_t width) {
 
+    char buffer[width];
+
+    memcpy (buffer, a, width);
+
+    memcpy (a, b, width);
+    memcpy (b, buffer, width);
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /// main
