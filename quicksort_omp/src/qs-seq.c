@@ -53,7 +53,7 @@ void QSORT(void *base, size_t num_elems, size_t size_type, int (*compar)(const v
   printf("Initial array/vector:\n");
 
   for(int current_elem = 0; current_elem < num_elems; current_elem++) {
-    
+
     printf("%lf ", ((double *) &base)[current_elem]);
 
   }
