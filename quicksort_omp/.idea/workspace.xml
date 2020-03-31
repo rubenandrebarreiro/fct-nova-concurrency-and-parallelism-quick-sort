@@ -27,7 +27,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35915ac7-e55f-4a32-8881-00c9005f4f94" name="Default Changelist" comment="" />
+    <list default="true" id="9fbe7e6a-dfb5-415f-8248-2d99179b8b8f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qs-seq.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/qs-seq.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/qs.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,15 +60,5 @@
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="242" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585654904149">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="242" y="345" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1585654904149" />
-    <state x="143" y="240" width="672" height="678" key="search.everywhere.popup" timestamp="1585654936453">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="143" y="240" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585654936453" />
   </component>
 </project>
