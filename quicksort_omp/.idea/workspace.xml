@@ -26,7 +26,6 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
-<<<<<<<
   <component name="ChangeListManager">
     <list default="true" id="9ca4bc5d-e6fa-47d7-a37f-25a9dbf6f519" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/dictionaries/rubenandrebarreiro.xml" afterDir="false" />
@@ -76,9 +75,7 @@
     <option name="directoryName" value="5za2rg9h" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
->>>>>>>
   <component name="PropertiesComponent">
-<<<<<<<
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
@@ -89,13 +86,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-=======
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
->>>>>>>
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-<<<<<<<
   <component name="SvnConfiguration">
     <configuration />
   </component>
