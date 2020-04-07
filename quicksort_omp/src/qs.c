@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <time.h>
 #include <sys/time.h>
 
-#include "qs.h" 
+#include "qs.h"
 
 
 #define TYPE_SET    1   // to work with doubles
@@ -21,7 +22,7 @@
 #define TYPE_STR    "double"
 #define TYPE_PRINT  "%lf"
 #define TYPE_SRAND  srand48(time(NULL))
-#define TYPE_RAND   drand48
+#define TYPE_RAND   drand48()
 
 int TYPE_less_than(const void* a, const void* b) {
     TYPE v1 = *(TYPE *)a;
@@ -36,7 +37,7 @@ int TYPE_less_than(const void* a, const void* b) {
 
 void TYPE_DEBUG(const void* array, long N) {
     TYPE *a = (TYPE *)array;
-    for (long i = 0; i < N-1; i++)
+    for (long i = 0; i < N; i++)
         printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
 }
 
@@ -59,7 +60,7 @@ void TYPE_validate(const void* array, long N, int (*compar)(const void *, const 
 #define TYPE_STR    "long"
 #define TYPE_PRINT  "%ld"
 #define TYPE_SRAND  srand48(time(NULL))
-#define TYPE_RAND   lrand48
+#define TYPE_RAND   lrand48()
 
 int TYPE_less_than(const void* a, const void* b) {
     TYPE v1 = *(TYPE *)a;
@@ -74,7 +75,7 @@ int TYPE_less_than(const void* a, const void* b) {
 
 void TYPE_DEBUG(const void* array, long N) {
     TYPE *a = (TYPE *)array;
-    for (long i = 0; i < N-1; i++)
+    for (long i = 0; i < N; i++)
         printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
 }
 
@@ -90,6 +91,50 @@ void TYPE_validate(const void* array, long N, int (*compar)(const void *, const 
 #endif
 /// End of stuff for TYPE = long
 
+////////////////////////////////////////////////////////////////////////////////////////
+/// Stuff for TYPE = string[STRSIZE]
+#if TYPE_SET == 3
+#define TYPE        char *
+#define TYPE_STR    "string"
+#define TYPE_PRINT  "%s"
+#define TYPE_SRAND  srand48(time(NULL))
+#define TYPE_RAND   TYPE_new()
+
+#define STRSIZE     20
+char *TYPE_new (void) {
+    char *p=malloc(STRSIZE+1); // include space for terminating '\0'
+    for (int i=0; i < STRSIZE; i++) {   // initialize strings w/ random small caps letters
+        p[i] = lrand48()%('z'-'a'+1)+'a';
+    }
+    p[STRSIZE] = '\0'; // terminate the string
+    return p;
+}
+
+int TYPE_less_than(const void* a, const void* b) {
+    const char *a1 = *(char **)a;
+    const char *b1 = *(char **)b;
+    return strcmp (a1, b1);
+}
+
+void TYPE_DEBUG(const void* array, long N) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N; i++)
+        printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
+}
+
+void TYPE_validate(const void* array, long N, int (*compar)(const void *, const void *)) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N-1; i++)
+        if (TYPE_less_than(&a[i], &a[i+1]) == 1) {
+            printf ("\nValidation TYPE(%s) failed at position %ld = "TYPE_PRINT", "TYPE_PRINT"\n\n", TYPE_STR, i, a[i], a[i+1]);
+            // TYPE_DEBUG(a, N);
+            exit(1);
+        }
+}
+#endif
+/// End of stuff for TYPE = string[STRSIZE]
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -103,33 +148,48 @@ double wctime () {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+/// swap elements from array
+void swap (void *a, void *b, size_t width) {
+    char buffer[width];
+    memcpy (buffer, a, width);
+    memcpy (a, b, width);
+    memcpy (b, buffer, width);
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
 /// main
 int main (int argc, char* argv[]) {
     if (argc != 2) {
-            printf ("Usage: ./quicksort-seq N\n");
+        printf ("Usage: ./qs-"VERSION" N\n");
         return -1;
     }
 
     // get the size of the array
     long N = atol (argv[1]);
-    
+
     // initialize the array with ranbdom contents of type TYPE
     TYPE* array = malloc (sizeof (*array) * N);
     TYPE_SRAND;
     for (int i = 0; i < N; i++)
-        array[i] = TYPE_RAND ();
+        array[i] = TYPE_RAND;
+
+    TYPE_DEBUG(array, N); // comment for larger arrays
 
     // sort the array using quick sort
     double start = wctime ();
-    QSORT(array, N, sizeof (*array), TYPE_less_than);
+    QSORT(array, N, sizeof (TYPE), TYPE_less_than);
     double end = wctime ();
 
     // print execution time
-    printf ("\nQuickSort %s\nArray size = %'ld\nWall clock elapsed time = %6.3lf seconds\n\n", VERSION, N, end-start);
-    
+    printf ("\nqs-%s\nArray size = %'ld\nWall clock elapsed time = %6.3lf seconds\n\n", VERSION, N, end-start);
+
+    TYPE_DEBUG(array, N); // comment for larger arrays
+
     // validate that the array is sorted correctly
     TYPE_validate (array, N, TYPE_less_than);
-    
+
     free (array);
 
     return 0;
