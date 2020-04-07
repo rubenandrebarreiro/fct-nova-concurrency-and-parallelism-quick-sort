@@ -7,20 +7,58 @@
 
 #include "qs.h"
 
-
-#define TYPE_SET    1   // to work with doubles
-#define TYPE_SET    2   // to work with longs
-#define TYPE_SET    3   // to work with ints
-// #define TYPE_SET    3, 4, ..., to whatever types you find interesting
-
+//#define TYPE_SET 1   // to work with chars
+//#define TYPE_SET 2   // to work with float
+//#define TYPE_SET 3   // to work with double
+#define TYPE_SET 4   // to work with integer
+//#define TYPE_SET 5   // to work with longs
+//#define TYPE_SET 6   // to work with strings
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-/// Stuff for TYPE = double
+/// Stuff for TYPE = char
 #if TYPE_SET == 1
-#define TYPE        double
-#define TYPE_STR    "double"
-#define TYPE_PRINT  "%lf"
+#define TYPE        char
+#define TYPE_STR    "char"
+#define TYPE_PRINT  "%c"
+#define TYPE_SRAND  srand48(time(NULL))
+#define TYPE_RAND   lrand48()%('z'-'a'+1)+'a';
+
+int TYPE_less_than(const void* a, const void* b) {
+    TYPE v1 = *(TYPE *)a;
+    TYPE v2 = *(TYPE *)b;
+
+    if (v1 < v2)
+        return -1;
+    if (v1 > v2)
+        return 1;
+    return 0;
+}
+
+void TYPE_DEBUG(const void* array, long N) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N; i++)
+        printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
+}
+
+void TYPE_validate(const void* array, long N, int (*compar)(const void *, const void *)) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N-1; i++)
+        if (TYPE_less_than(&a[i], &a[i+1]) == 1) {
+            printf ("\nValidation TYPE(%s) failed at position %ld = "TYPE_PRINT", "TYPE_PRINT"\n\n", TYPE_STR, i, a[i], a[i+1]);
+            // TYPE_DEBUG(a, N);
+            exit(1);
+        }
+}
+#endif
+/// End of stuff for TYPE = char
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// Stuff for TYPE = float
+#if TYPE_SET == 2
+#define TYPE        float
+#define TYPE_STR    "float"
+#define TYPE_PRINT  "%f"
 #define TYPE_SRAND  srand48(time(NULL))
 #define TYPE_RAND   drand48()
 
@@ -51,11 +89,89 @@ void TYPE_validate(const void* array, long N, int (*compar)(const void *, const 
         }
 }
 #endif
+/// End of stuff for TYPE = float
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// Stuff for TYPE = double
+#if TYPE_SET == 3
+#define TYPE        double
+#define TYPE_STR    "double"
+#define TYPE_PRINT  "%lf"
+#define TYPE_SRAND  srand48(time(NULL))
+#define TYPE_RAND   drand48() * 10.0
+
+int TYPE_less_than(const void* a, const void* b) {
+    TYPE v1 = *(TYPE *)a;
+    TYPE v2 = *(TYPE *)b;
+
+    if (v1 < v2)
+        return -1;
+    if (v1 > v2)
+        return 1;
+    return 0;
+}
+
+void TYPE_DEBUG(const void* array, long N) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N; i++)
+        printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
+}
+
+void TYPE_validate(const void* array, long N, int (*compar)(const void *, const void *)) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N-1; i++)
+        if (TYPE_less_than(&a[i], &a[i+1]) == 1) {
+            printf ("\nValidation TYPE(%s) failed at position %ld = "TYPE_PRINT", "TYPE_PRINT"\n\n", TYPE_STR, i, a[i], a[i+1]);
+            // TYPE_DEBUG(a, N);
+            exit(1);
+        }
+}
+#endif
 /// End of stuff for TYPE = double
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// Stuff for TYPE = integer
+#if TYPE_SET == 4
+#define TYPE        int
+#define TYPE_STR    "int"
+#define TYPE_PRINT  "%d"
+#define TYPE_SRAND  srand48(time(NULL))
+#define TYPE_RAND   rand() % 100
+
+int TYPE_less_than(const void* a, const void* b) {
+    TYPE v1 = *(TYPE *)a;
+    TYPE v2 = *(TYPE *)b;
+
+    if (v1 < v2)
+        return -1;
+    if (v1 > v2)
+        return 1;
+    return 0;
+}
+
+void TYPE_DEBUG(const void* array, long N) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N; i++)
+        printf ("%ld = "TYPE_PRINT"\n", i, a[i]);
+}
+
+void TYPE_validate(const void* array, long N, int (*compar)(const void *, const void *)) {
+    TYPE *a = (TYPE *)array;
+    for (long i = 0; i < N-1; i++)
+        if (TYPE_less_than(&a[i], &a[i+1]) == 1) {
+            printf ("\nValidation TYPE(%s) failed at position %ld = "TYPE_PRINT", "TYPE_PRINT"\n\n", TYPE_STR, i, a[i], a[i+1]);
+            // TYPE_DEBUG(a, N);
+            exit(1);
+        }
+}
+#endif
+/// End of stuff for TYPE = integer
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /// Stuff for TYPE = long
-#if TYPE_SET == 2
+#if TYPE_SET == 5
 #define TYPE        long
 #define TYPE_STR    "long"
 #define TYPE_PRINT  "%ld"
@@ -93,7 +209,7 @@ void TYPE_validate(const void* array, long N, int (*compar)(const void *, const 
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /// Stuff for TYPE = string[STRSIZE]
-#if TYPE_SET == 3
+#if TYPE_SET == 6
 #define TYPE        char *
 #define TYPE_STR    "string"
 #define TYPE_PRINT  "%s"
