@@ -25,7 +25,10 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="107d61e5-d87a-4647-a8c9-b2a011bba782" name="Default Changelist" comment="Sequential QuickSort finished (already tested)" />
+    <list default="true" id="107d61e5-d87a-4647-a8c9-b2a011bba782" name="Default Changelist" comment="Initial Setup made">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quicksort_omp/src/qs-omp.c" beforeDir="false" afterPath="$PROJECT_DIR$/quicksort_omp/src/qs-omp.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +44,7 @@
     <option name="directoryName" value="24036s2n" />
   </component>
   <component name="ProjectId" id="1aWelIKamXU5cxG4Bnsxm1YndOk" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -53,7 +56,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SvnConfiguration">
@@ -66,24 +72,45 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586855926877</updated>
-      <workItem from="1586855929774" duration="1279000" />
+      <workItem from="1586855929774" duration="7822000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial Setup made">
+      <created>1586857495000</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586857495000</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Setup made" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Setup made" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1239" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586857208176">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="1239" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1586857208176" />
-    <state x="588" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2" timestamp="1586259581954">
+    <state x="588" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2" timestamp="1586857497226">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1586259581954" />
+    <state x="588" y="274" width="800" height="556" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1586857497226" />
   </component>
 </project>
